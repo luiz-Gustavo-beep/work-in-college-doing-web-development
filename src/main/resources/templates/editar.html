@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar carro</title>
+</head>
+
+<body>
+
+    <h1>Editar carro</h1>
+
+    <form action="/salvar" method="post">
+
+        <input type="hidden"
+               name="id"
+               th:value="${carro.id}">
+
+        <input type="text"
+               name="modelo"
+               placeholder="Modelo"
+               th:value="${carro.modelo}">
+        <br><br>
+
+        <input type="text"
+               name="marca"
+               placeholder="Marca"
+               th:value="${carro.marca}">
+        <br><br>
+
+        <input type="number"
+               name="ano"
+               placeholder="Ano"
+               th:value="${carro.ano}">
+        <br><br>
+
+        <input type="number"
+               name="preco"
+               placeholder="Preço"
+               th:value="${carro.preco}">
+        <br><br>
+
+        <input type="text"
+               name="imagem"
+               placeholder="URL da imagem"
+               th:value="${carro.imagem}">
+        <br><br>
+
+        <textarea
+            name="descricao"
+            rows="5"
+            cols="40"
+            placeholder="Descrição do veículo"
+            th:text="${carro.descricao}">
+        </textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Atualizar
+        </button>
+
+    </form>
+
+</body>
+
+</html>

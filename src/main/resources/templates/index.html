@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ribeiro Automóveis</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header>
+
+       
+
+            <div class="logo">
+                Ribeiro Automóveis
+            </div>
+        <nav>
+            <div class="menu">
+                <a href="/">Início</a>
+                <a href="#">Carros</a>
+                <a href="/login">Admin</a>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <section class="banner">
+
+        <h1>Seu próximo carro está aqui</h1>
+
+        <p>Os melhores veículos com os melhores preços</p>
+
+        <div class="pesquisa-container">
+
+            <form action="/" method="get">
+
+                <input type="text"
+                       name="pesquisa"
+                       placeholder="Pesquisar veículo...">
+
+                <button type="submit">
+                    Buscar
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <section class="carros">
+
+        <h2>Veículos em destaque</h2>
+
+        <div class="cards">
+
+            <div class="card" th:each="carro : ${carros}">
+
+                <img th:src="${carro.imagem}"
+                     th:alt="${carro.modelo}">
+
+                <div class="card-content">
+
+                    <h3 th:text="${carro.modelo}"></h3>
+
+                    <p>
+
+                        <span th:text="${carro.ano}"></span>
+
+                        •
+
+                        <span th:text="${carro.marca}"></span>
+
+                    </p>
+
+                    <a th:href="@{/carro/{id}(id=${carro.id})}"
+                       class="btn">
+
+                        Ver mais
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <p>
+            © 2026 Ribeiro Automóveis
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

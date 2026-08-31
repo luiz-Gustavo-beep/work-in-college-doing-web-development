@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Admin</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="painel">
+
+        <h1>Painel Administrativo</h1>
+
+        <a href="/logout" class="logout">
+            Sair
+        </a>
+
+        <br><br>
+
+        <form action="/salvar"
+              method="post"
+              th:object="${carro}">
+
+            <input
+                type="text"
+                th:field="*{modelo}"
+                placeholder="Modelo">
+
+            <input
+                type="text"
+                th:field="*{marca}"
+                placeholder="Marca">
+
+            <input
+                type="number"
+                th:field="*{ano}"
+                placeholder="Ano">
+
+            <input
+                type="number"
+                th:field="*{preco}"
+                placeholder="Preço">
+
+            <input
+                type="text"
+                th:field="*{imagem}"
+                placeholder="URL da imagem">
+
+            <textarea
+                th:field="*{descricao}"
+                placeholder="Descrição"
+                rows="5">
+            </textarea>
+
+            <button type="submit">
+                Salvar
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="lista">
+
+        <h2>Carros cadastrados</h2>
+
+        <div class="item"
+             th:each="carro : ${carros}">
+
+            <div>
+
+                <strong th:text="${carro.modelo}">
+                </strong>
+
+                <p th:text="${carro.marca}">
+                </p>
+
+            </div>
+
+            <div class="acoes">
+
+                <a th:href="@{/editar/{id}(id=${carro.id})}">
+                    Editar
+                </a>
+
+                <a th:href="@{/excluir/{id}(id=${carro.id})}">
+                    Excluir
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
